@@ -1,0 +1,47 @@
+#include <stdio.h>
+#include <stdlib.h>
+struct Student {
+    char name[50];
+    int age;
+    float gpa;
+};
+void printArray(int arr[], int size);
+void updateGPA(struct Student *studentPtr, float newGPA);
+
+int main() {
+    int i;
+    int numbers[] = {1, 2, 3, 4, 5};
+    int sum = 0;
+    struct Student student1 = {"Aman", 20, 3.8};
+    for (i = 0; i < 5; i++) {
+        sum += numbers[i];
+    }
+    printf("Sum of numbers: %d\n", sum);
+    if (student1.gpa >= 3.5) {
+        printf("%s is an honor student.\n", student1.name);
+    } else {
+        printf("%s is a regular student.\n", student1.name);
+    }
+    updateGPA(&student1, 4.0);
+    printf("Updated GPA for %s: %.2f\n", student1.name, student1.gpa);
+    struct Student students[3] = {
+        {"Karan", 19, 3.6},
+        {"Saurav", 19, 3.9},
+        {"Bhavesh", 22, 3.2}
+    };
+    for (i = 0; i < 3; i++) {
+        printf("Student %d: %s, Age: %d, GPA: %.2f\n", i+1, students[i].name, students[i].age, students[i].gpa);
+    }
+
+    return 0;
+}
+void printArray(int arr[], int size) {
+    int i;
+    for (i = 0; i < size; i++) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+}
+void updateGPA(struct Student *studentPtr, float newGPA) {
+    studentPtr->gpa = newGPA;
+}
